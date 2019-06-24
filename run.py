@@ -15,7 +15,7 @@
 
 import torch
 
-from map_class import Map
+from map_class import MapClass
 
 
 
@@ -44,8 +44,6 @@ gray_colors = torch.rand((10))
 
 gray_colors
 
-input_data.dim()
-
 # +
 # Network configuration
 length = 3
@@ -60,6 +58,16 @@ else:
     dim = len(input_data[0])
 # -
 
-map1 = Map()
 
-map1.dupa()
+
+
+
+map1 = MapClass(length, width, dim)
+
+map1.map
+
+
+
+
+
+
