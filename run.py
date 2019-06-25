@@ -72,11 +72,6 @@ map1.get_location(11)
 
 12%3
 
-length = 4
-width = 3
-
-x
-
 
 def get_location(number):
     row = "dupa"
