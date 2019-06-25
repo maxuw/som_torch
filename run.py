@@ -15,6 +15,9 @@
 
 import torch
 
+import numpy as np
+import matplotlib.pyplot as plt
+
 from map_class import MapClass
 
 
@@ -28,6 +31,12 @@ building_sizes = [[0.1, 0.3], [0.1, 0.2], [1., 1.], [0.125, 0.2], [0.529, 0.12],
 gray_colors = [[0.1], [0.], [1.], [0.125], [0.529], [1.0], [0.33], [0.4], [0.67], [.33], [.5]]
 #     torch.rand((10))
 
+def basic_visualization(map_):
+    plt.imshow(map_);
+    plt.colorbar()
+    plt.show()
+
+
 def convert_data(data):
     tensor_data = []
     for row in data:
@@ -36,9 +45,14 @@ def convert_data(data):
     return tensor_data
 
 
-def map_view(map_):
+def map_view_for_coding(map_):
     return torch.transpose(map_, 0, 1).view(dim, length, width)
 #     return map_.view(dim, length, width)
+
+
+def map_display(map_):
+#     return torch.transpose(map_, 0, 1).view(dim, length, width)
+    return map_.view(dim, length, width)
 
 
 # +
@@ -47,7 +61,7 @@ length = 4
 width = 3
 number_iterations = 100
 
-input_data = convert_data(building_sizes)
+input_data = convert_data(gray_colors)
 
 
 move_closer_coef = 0.5
@@ -64,92 +78,25 @@ def cycle(map_, input_data):
         i_bmu = map1.find_bmu(row).item()
         map_.move_closer(i_bmu, row)
         
-    print(map_view(map_.map))
-        
+    print(map_view(map_.map))   
 
 
 
 
 
+map.view(dim, length, width)
 
+map2.map.view(dim, length, width)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
 map1.map
 
 # +
-# cycle(map1, input_data)
+basic_visualization(numpy_array)
 
-# +
-# map_view(map2.map)
+
+
 # -
-
-map2.map.view(1, 2, -1)
-
-torch.view(map2.map, 4, dim=1)
-
-torch.transpose(map2.map, dim0, dim1)
-
-
-
-
-input_data[0]
-
-map2 = MapClass(length, width, dim, move_closer_coef)
-
-map_view(map2.map)
-
-for i in range(11):
-    print((map2.map[i] - input_data[0]).pow(2))
-
-for i in range(11):
-    print(sum((map2.map[i] - input_data[0]).pow(2)))
-
-map2.find_bmu(input_data[0])
-
-map1.move_closer(3, input_data[0])
-
-map_view(map1.map)
-
-input_data[1]
-
-map1.find_bmu(input_data[1])
-
-map1.move_closer(2, input_data[1])
-
-map_view(map1.map)
-
-
-
-
-
-
-
-
-
-torch.FloatTensor([0., 0., 1.])
-
-
-map1 = MapClass(length, width, dim, move_closer_coef)
-
-map1.map
-
-map1.map
-
-map1.find_bmu(input_data[0])
-
-map1.map[5]
-
-input_data[0]
-
-change = map1.map[5] - input_data[0]
-
-map1.map[5] = map1.map[5] - (change * move_closer_coef)
-
-map1.map
-
-map1.move_closer(0, input_data[0])
-
-map1
 
 
