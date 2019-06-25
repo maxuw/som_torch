@@ -1,11 +1,5 @@
 import torch
 
-# class Map:
-#
-#     def dupa(self):
-#         print("dupa")
-
-
 class MapClass:
 
     def __init__(self, length, width, node_dimension, move_closer_coef):
