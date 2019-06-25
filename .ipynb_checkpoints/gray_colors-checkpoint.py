@@ -14,13 +14,14 @@
 # ---
 
 import torch
+import torch.utils.data
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 from map_class import MapClass
 
-import torch.utils.data
+
 
 #buildings data
 building_sizes = [[0.1, 0.3], [0.1, 0.2], [1., 1.], [0.125, 0.2], [0.529, 0.12], [1.0, 0.3], [0.33, 0.3], 
@@ -42,10 +43,6 @@ width = 3
 number_iterations = 100
 
 move_closer_coef = 0.5
-
-# if len(input_data[0]) == 1:
-#     dim = 1
-# else:
 
 dim = 0
 
@@ -90,20 +87,17 @@ def cycle(map_, training_data):
     print(map_view(map_.map))   
 
 
+
+
+
 training = load_data(data)
 
-map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.map
-
-
-
-map2.map.view(dim, length, width)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.map
 
-basic_visualization(numpy_array)
+
+basic_visualization()
 
 

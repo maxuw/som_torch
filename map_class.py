@@ -9,7 +9,6 @@ class MapClass:
         self.node_dimenstion = node_dimension
         self.move_closer_coef = move_closer_coef
 
-        # I'm defining
 
         self.map = self.initialize_map(self.length, self.width, self.node_dimenstion)
 
@@ -34,11 +33,11 @@ class MapClass:
     # returns index - topk[1];
     def find_bmu(self, tensor_row_data):
         calc = (self.map - tensor_row_data).pow(2)
-        print(calc)
+        # print(calc)
         summed_rows = (torch.sum(calc, dim=1))
-        print(summed_rows)
+        # print(summed_rows)
         topk = torch.topk(summed_rows, 1, dim=0, largest=False)
-        print(topk)
+        # print(topk)
         return topk[1]
 
     def move_closer(self, bmu_index, tensor_row_data):

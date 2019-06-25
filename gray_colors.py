@@ -14,13 +14,14 @@
 # ---
 
 import torch
+import torch.utils.data
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 from map_class import MapClass
 
-import torch.utils.data
+
 
 #buildings data
 building_sizes = [[0.1, 0.3], [0.1, 0.2], [1., 1.], [0.125, 0.2], [0.529, 0.12], [1.0, 0.3], [0.33, 0.3], 
@@ -42,12 +43,7 @@ width = 3
 number_iterations = 100
 
 move_closer_coef = 0.5
-
-# if len(input_data[0]) == 1:
-#     dim = 1
-# else:
-
-dim = 0
+iterations = 100
 
 
 # -
@@ -78,32 +74,49 @@ def map_view_for_coding(map_):
 
 def map_display(map_):
 #     return torch.transpose(map_, 0, 1).view(dim, length, width)
-    return map_.view(dim, length, width)
+    if dim == 1:
+        return map_.view(length, width)
+    else:
+        return map_.view(dim, length, width)
+    
 
 
-def cycle(map_, training_data):
+def cycle(map_, training_data, display_step=False):
     for batch in training_data:
-        for row in batch:
-            i_bmu = map1.find_bmu(row).item()
+#         type(batch)
+#         print(batch)
+        for row in batch[0]:
+#             type(row)
+#             print(row)
+            i_bmu = map_.find_bmu(row).item()
             map_.move_closer(i_bmu, row)
         
-    print(map_view(map_.map))   
+#     print(map_view(map_.map))
+    if display_step == True:
+        basic_visualization(map_display(map_.map))
+        print(map_display(map_.map))
+
+
+def large_cycle(map_, training_data):
+    basic_visualization(map_display(map_.map))
+    print(map_display(map_.map))
+    for i in range(number_iterations):
+        cycle(map_, training_data)
+    basic_visualization(map_display(map_.map))
+    print(map_display(map_.map))
+
 
 
 training = load_data(data)
 
-map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.map
-
-
-
-map2.map.view(dim, length, width)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.map
+cycle(map1, training)
 
-basic_visualization(numpy_array)
+large_cycle(map1, training)
+
+
 
 
