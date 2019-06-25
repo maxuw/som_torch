@@ -40,7 +40,11 @@ class MapClass:
     # returns index - topk[1];
     def find_bmu(self, tensor_row_data):
         calc = (self.map - tensor_row_data).pow(2)
-        topk = torch.topk(calc, 1, dim=0, largest=False)
+        print(calc)
+        summed_rows = (torch.sum(calc, dim=1))
+        print(summed_rows)
+        topk = torch.topk(summed_rows, 1, dim=0, largest=False)
+        print(topk)
         return topk[1]
 
     def move_closer(self, bmu_index, tensor_row_data):

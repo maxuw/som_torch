@@ -37,7 +37,8 @@ def convert_data(data):
 
 
 def map_view(map_):
-    return map_.view(dim, length, width)
+    return torch.transpose(map_, 0, 1).view(dim, length, width)
+#     return map_.view(dim, length, width)
 
 
 # +
@@ -74,17 +75,37 @@ def cycle(map_, input_data):
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-map_view(map1.map)
+map1.map
 
+# +
+# cycle(map1, input_data)
 
+# +
+# map_view(map2.map)
+# -
 
-cycle(map1, input_data)
+map2.map.view(1, 2, -1)
+
+torch.view(map2.map, 4, dim=1)
+
+torch.transpose(map2.map, dim0, dim1)
+
 
 
 
 input_data[0]
 
-map1.find_bmu(input_data[0]).item()
+map2 = MapClass(length, width, dim, move_closer_coef)
+
+map_view(map2.map)
+
+for i in range(11):
+    print((map2.map[i] - input_data[0]).pow(2))
+
+for i in range(11):
+    print(sum((map2.map[i] - input_data[0]).pow(2)))
+
+map2.find_bmu(input_data[0])
 
 map1.move_closer(3, input_data[0])
 
