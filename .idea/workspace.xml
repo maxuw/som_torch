@@ -18,11 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="40">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -48,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="277" />
     <option name="y" value="67" />
     <option name="width" value="1494" />
@@ -150,12 +147,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561414669115</updated>
-      <workItem from="1561414670339" duration="15689000" />
+      <workItem from="1561414670339" duration="18058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15689000" />
+    <option name="totallyTimeSpent" value="18058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="277" y="67" width="1494" height="938" extended-state="0" />
@@ -210,11 +207,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="40">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>

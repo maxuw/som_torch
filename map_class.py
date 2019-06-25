@@ -1,5 +1,5 @@
 import torch
-from torch.nn.modules.distance import PairwiseDistance
+# from torch.nn.modules.distance import PairwiseDistance
 
 
 class MapClass:
@@ -13,7 +13,8 @@ class MapClass:
 
 
         self.map = self.initialize_map(self.length, self.width, self.node_dimenstion)
-        self.location = self.initialize_locations(self.map)
+        self.locations = self.initialize_locations(self.map)
+        self.distance_matrix = self.create_distance_matrix(self.locations, self.length, self.width)
 
         # self.initialize_location(self.length, self.width, self.node_dimenstion)
 
@@ -60,15 +61,21 @@ class MapClass:
     def create_distance_matrix(self, locations, length, width):
         distance_matrix = torch.zeros(length * width, length * width)
 
-        pair_dist = nn.PairwiseDistance(p=2)
-        distances = pair_dist()
+        for i in range(len(locations)):
+            for j in range(i, len(locations)):
+                if i != j:
+                    tens1 = torch.tensor(locations[i], dtype=torch.float)
+                    tens2 = torch.tensor(locations[j], dtype=torch.float)
 
+                    minus = tens1 - tens2
+                    minus_power = minus.pow(2)
+                    sum_minus_power = torch.sum(minus_power, dim=0)
 
-        >>> pdist = nn.PairwiseDistance(p=2)
-        >>> input1 = torch.randn(100, 128)
-        >>> input2 = torch.randn(100, 128)
-        >>> output = pdist(input1, input2)
+                    sqrt = torch.sqrt(sum_minus_power)
+
+                    distance_matrix[i][j] = sqrt
+                    distance_matrix[j][i] = sqrt
 
         return distance_matrix
 
-    def calculate_distance(self):
+    # def calculate_distance(self):
