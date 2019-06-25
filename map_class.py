@@ -1,4 +1,6 @@
 import torch
+from torch.nn.modules.distance import PairwiseDistance
+
 
 class MapClass:
 
@@ -56,9 +58,17 @@ class MapClass:
         return locations
 
     def create_distance_matrix(self, locations, length, width):
-        distance_matrix = torch.zeros(length, width)
+        distance_matrix = torch.zeros(length * width, length * width)
 
+        pair_dist = nn.PairwiseDistance(p=2)
+        distances = pair_dist()
+
+
+        >>> pdist = nn.PairwiseDistance(p=2)
+        >>> input1 = torch.randn(100, 128)
+        >>> input2 = torch.randn(100, 128)
+        >>> output = pdist(input1, input2)
 
         return distance_matrix
 
-    
+    def calculate_distance(self):

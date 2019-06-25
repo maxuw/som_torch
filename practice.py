@@ -123,6 +123,39 @@ map2 = MapClass(length, width, dim, move_closer_coef)
 
 map2.map
 
-map2.initialize_locations(map2.map)
+locs = map2.initialize_locations(map2.map)
+
+from torch.nn.modules.distance import PairwiseDistance
+
+
+pdist = PairwiseDistance(p=2)
+input1 = torch.randn(100, 128)
+input2 = torch.randn(100, 128)
+output = pdist(input1, input2)
+output
+
+input1.shape
+
+output.shape
+
+output = pdist(input1, input2)
+
+
+
+loc_tens = torch.tensor(locs, dtype=torch.float64)
+
+loc_tens
+
+output2 = pdist(loc_tens[:,0], loc_tens[:,1])
+
+loc_tens[:,0]
+
+output2 = pdist(loc_tens, loc_tens)
+
+output2
+
+output_as_32 = torch.tensor(output2, dtype=torch.float32)
+
+output_as_32
 
 
