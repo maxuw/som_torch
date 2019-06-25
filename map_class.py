@@ -8,11 +8,12 @@ import torch
 
 class MapClass:
 
-    def __init__(self, length, width, node_dimension):
+    def __init__(self, length, width, node_dimension, move_closer_coef):
         # print("dupa")
         self.length = length
         self.width = width
         self.node_dimenstion = node_dimension
+        self.move_closer_coef = move_closer_coef
 
         # I'm defining
 
@@ -36,7 +37,13 @@ class MapClass:
 
         print(row, column)
 
+    # returns index - topk[1];
     def find_bmu(self, tensor_row_data):
         calc = (self.map - tensor_row_data).pow(2)
         topk = torch.topk(calc, 1, dim=0, largest=False)
         return topk[1]
+
+    def move_closer(self, bmu_index, tensor_row_data):
+        change = self.map[bmu_index] - tensor_row_data
+
+        self.map[bmu_index].add_(-(change * self.move_closer_coef))

@@ -20,7 +20,7 @@ from map_class import MapClass
 
 
 #gray colors data
-gray_colors = [[0.], [0.], [1.], [0.125], [0.529], [1.0], [0.33], [0.4], [0.67], [.33], [.5]]
+gray_colors = [[0.1], [0.], [1.], [0.125], [0.529], [1.0], [0.33], [0.4], [0.67], [.33], [.5]]
 #     torch.rand((10))
 
 gray_colors
@@ -43,6 +43,8 @@ number_iterations = 100
 input_data = convert_data(gray_colors)
 
 
+move_closer_coef = 0.5
+
 # if len(input_data[0]) == 1:
 #     dim = 1
 # else:
@@ -53,56 +55,26 @@ input_data[0].shape
 torch.FloatTensor([0., 0., 1.])
 
 
-map1 = MapClass(length, width, dim)
-
-
-
-map1.find_bmu(input_data[0])[1]
-
-
+map1 = MapClass(length, width, dim, move_closer_coef)
 
 map1.map
 
-wyliczone = (map1.map - input_data[0]).pow(2)
-wyliczone
+map1.map
 
-torch.topk(wyliczone, 1, dim=0, largest=False)
+map1.find_bmu(input_data[0])
 
+map1.map[5]
 
+input_data[0]
 
-map1.get_location(7)
+change = map1.map[5] - input_data[0]
 
+map1.map[5] = map1.map[5] - (change * move_closer_coef)
 
+map1.map
 
-12/3
+map1.move_closer(0, input_data[0])
 
-12%3
-
-
-def get_location(number):
-    row = "dupa"
-    column = "dupa2"
-
-    # if x%width == 0:
-    row = int((x/width))
-    column = x - (row * width)
-
-
-
-    print(row, column)
-
-# +
-x = 4
-row = "dupa"
-column = "dupa2"
-
-# if x%width == 0:
-row = int((x/width))
-column = x - (row * width)
-
-    
-    
-print(row, column)
-# -
+map1
 
 
