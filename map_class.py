@@ -14,7 +14,7 @@ class MapClass:
 
         self.map = self.initialize_map(self.length, self.width, self.node_dimenstion)
         self.locations = self.initialize_locations(self.map)
-        self.distance_matrix = self.create_distance_matrix(self.locations, self.length, self.width)
+        self.distances = self.create_distance_matrix(self.locations, self.length, self.width)
 
         # self.initialize_location(self.length, self.width, self.node_dimenstion)
 
