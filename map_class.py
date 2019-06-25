@@ -8,7 +8,7 @@ import torch
 
 class MapClass:
 
-    def __init__(self, length, width, node_dimenstion):
+    def __init__(self, length, width, node_dimension):
         # print("dupa")
         self.length = length
         self.width = width
@@ -35,3 +35,5 @@ class MapClass:
         column = node_number - (row * self.width)
 
         print(row, column)
+
+    def find_bmu(self, row_number):
