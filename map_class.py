@@ -12,7 +12,7 @@ class MapClass:
         # print("dupa")
         self.length = length
         self.width = width
-        self.node_dimenstion = node_dimenstion
+        self.node_dimenstion = node_dimension
 
         # I'm defining
 
@@ -36,4 +36,7 @@ class MapClass:
 
         print(row, column)
 
-    def find_bmu(self, row_number):
+    def find_bmu(self, tensor_row_data):
+        calc = (self.map - tensor_row_data).pow(2)
+        topk = torch.topk(calc, 1, dim=0, largest=False)
+        return topk[1]

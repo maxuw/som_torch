@@ -48,25 +48,31 @@ input_data = convert_data(gray_colors)
 # else:
 dim = len(input_data[0])
 # -
-input_data
+input_data[0].shape
 
 torch.FloatTensor([0., 0., 1.])
 
 
 map1 = MapClass(length, width, dim)
 
+
+
+map1.find_bmu(input_data[0])[1]
+
+
+
 map1.map
 
-wyliczone = (map1.map - gray_colors[0]).pow(2)
+wyliczone = (map1.map - input_data[0]).pow(2)
 wyliczone
 
 torch.topk(wyliczone, 1, dim=0, largest=False)
 
 
 
+map1.get_location(7)
 
 
-map1.get_location(11)
 
 12/3
 
