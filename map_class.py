@@ -11,7 +11,7 @@ class MapClass:
 
 
         self.map = self.initialize_map(self.length, self.width, self.node_dimenstion)
-
+        self.location = self.initialize_locations(self.map)
 
         # self.initialize_location(self.length, self.width, self.node_dimenstion)
 
@@ -54,3 +54,11 @@ class MapClass:
             locations.append(location)
             # print(location)
         return locations
+
+    def create_distance_matrix(self, locations, length, width):
+        distance_matrix = torch.zeros(length, width)
+
+
+        return distance_matrix
+
+    
