@@ -119,10 +119,4 @@ large_cycle(map1, training)
 
 
 
-map2 = MapClass(length, width, dim, move_closer_coef)
-
-map2.map
-
-map2.initialize_locations(map2.map)
-
 

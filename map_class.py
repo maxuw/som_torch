@@ -12,6 +12,7 @@ class MapClass:
 
         self.map = self.initialize_map(self.length, self.width, self.node_dimenstion)
 
+
         # self.initialize_location(self.length, self.width, self.node_dimenstion)
 
     def initialize_map(self, length, width, dimention):
@@ -29,6 +30,7 @@ class MapClass:
         column = node_number - (row * self.width)
 
         print(row, column)
+        return(row, column)
 
     # returns index - topk[1];
     def find_bmu(self, tensor_row_data):
@@ -44,3 +46,11 @@ class MapClass:
         change = self.map[bmu_index] - tensor_row_data
 
         self.map[bmu_index].add_(-(change * self.move_closer_coef))
+
+    def initialize_locations(self, map_):
+        locations = []
+        for i in range(len(map_)):
+            location = self.get_location(i)
+            locations.append(location)
+            # print(location)
+        return locations
