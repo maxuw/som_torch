@@ -21,5 +21,17 @@ class MapClass:
         # self.initialize_location(self.length, self.width, self.node_dimenstion)
 
     def initialize_map(self, length, width, dimention):
-        map_init = torch.rand((dimention, length, width))
+        map_init = torch.rand((length * width, dimention))
+
+
         return map_init
+
+    def get_location(self, node_number):
+        row = "dupa"
+        column = "dupa2"
+
+        # if x%width == 0:
+        row = int((node_number / self.width))
+        column = node_number - (row * self.width)
+
+        print(row, column)
