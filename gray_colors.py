@@ -38,19 +38,13 @@ gray_colors = [[0.1], [0.], [1.], [0.125], [0.529], [1.0], [0.33], [0.4], [0.67]
 data = gray_colors
 batch_size = 4
 
-length = 4
-width = 3
+length = 2
+width = 2
 number_iterations = 100
 
 move_closer_coef = 0.5
 iterations = 100
-
-
 # -
-def basic_visualization(map_):
-    plt.imshow(map_);
-    plt.colorbar()
-    plt.show()
 
 
 # +
@@ -94,14 +88,70 @@ training = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.map
+map1.weights
 
-map1.cycle(training)
+map1.cycle(training, verbose=True)
 
-map1.map
+map1.weights
+
+
+
+train = []
+for train_ in training:
+    print(train_)
+    train = train_
+
+row_data = train[0][2]
+row_data
+
+map1.weights
+
+difference = row_data - map1.weights
+difference
+
+bmu_index = 0
+
+map1.impact_matrix[bmu_index].view(4,1)
+
+change = map1.impact_matrix[bmu_index].view(4,1) * difference
+change
+
+map1.weights = map1.weights + change
+
+map1.weights
+
+map1.impact_matrix[bmu_index]
 
 map1.distance_matrix
 
+torch.mm(map1.impact_matrix[bmu_index].view(4,1), change)
+
 map1.impact_matrix
 
-basic_visualization(map1.map)
+basic_visualization(map_display(map1.weights))
+
+map_display(map1.weights)
+
+
+
+
+
+map1.weights
+
+difference = row_data - map1.weights
+
+bmu_index = 0
+
+
+
+change = map1.impact_matrix[bmu_index].view(4,1) * difference
+
+map1.weights = map1.weights + change
+
+
+
+map1.weights
+
+difference = row_data - map1.weights
+change = map1.impact_matrix[bmu_index].view(4,1) * difference
+map1.weights = map1.weights + change

@@ -1,6 +1,7 @@
 import torch
 # from torch.nn.modules.distance import PairwiseDistance
 from torch.distributions.normal import Normal
+import matplotlib.pyplot as plt
 
 
 class MapClass:
@@ -38,19 +39,25 @@ class MapClass:
         return(row, column)
 
     # returns index - topk[1];
-    def find_bmu(self, tensor_row_data):
+    def find_bmu(self, tensor_row_data, verbose=False):
         calc = (self.weights - tensor_row_data).pow(2)
         # print(calc)
         summed_rows = (torch.sum(calc, dim=1))
         # print(summed_rows)
         topk = torch.topk(summed_rows, 1, dim=0, largest=False)
-        # print(topk)
+        if verbose: print(topk[1])
         return topk[1]
 
     def move_closer(self, bmu_index, tensor_row_data):
-        change = self.weights[bmu_index] - tensor_row_data
 
-        self.weights[bmu_index].add_(-(change * self.move_closer_coef))
+        difference = tensor_row_data - self.weights
+        change = self.impact_matrix[bmu_index].view(4, 1) * difference
+        self.weights = self.weights + (change * self.move_closer_coef)
+
+        # change = self.weights[bmu_index] - tensor_row_data
+        #
+        #
+        # self.weights[bmu_index].add_(-(change * self.move_closer_coef))
 
     def initialize_locations(self, weights):
         locations = []
@@ -85,14 +92,21 @@ class MapClass:
 
         return (dist.cdf(-distance_matrix)) * 2
 
-    def cycle(self, training_data, display_step=False):
+    def cycle(self, training_data, verbose=False):
         for batch in training_data:
             t_batch = torch.stack([x for x in batch]).float().t()
             for row in t_batch:
                 # print(row)
-                i_bmu = self.find_bmu(row).item()
+                i_bmu = self.find_bmu(row, verbose).item()
                 self.move_closer(i_bmu, row)
 
-        # if display_step == True:
-        #     basic_visualization(weights_display(weights_.weights))
-        #     print(weights_display(weights_.weights))
+        if verbose == True:
+            self.basic_visualization()
+            print(weights_display(weights_.weights))
+
+    def basic_visualization(self):
+        plt.imshow(self.weights);
+        plt.colorbar()
+        plt.show()
+
+    
