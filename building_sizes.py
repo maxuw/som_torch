@@ -116,39 +116,8 @@ map1.map
 
 map1.distance_matrix
 
-
+map1.impact_matrix
 
 basic_visualization(map1.map)
-
-from torch.distributions.normal import Normal
-
-import torch.distributions.distribution.Distribution
-
-dist = Normal(torch.tensor([100.0]), torch.tensor([10.0]))
-
-dist.cdf(84)
-
-dist.icdf(torch.tensor([84.0]))
-
-dist.mean
-
-dist.sample()
-
-dist.log_prob(100)
-
-dist.probs(100)
-
-dist.variance
-
-dist
-
-from scipy.stats import norm
-
-
-print(norm.cdf(1, 100, 10))
-
-print(norm.cdf(-10000, 0, 10))
-
-dist.cdf(1)
 
 

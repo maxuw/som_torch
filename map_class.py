@@ -1,5 +1,6 @@
 import torch
 # from torch.nn.modules.distance import PairwiseDistance
+from torch.distributions.normal import Normal
 
 
 class MapClass:
@@ -14,7 +15,8 @@ class MapClass:
 
         self.map = self.initialize_map(self.length, self.width, self.node_dimenstion)
         self.locations = self.initialize_locations(self.map)
-        self.distances = self.create_distance_matrix(self.locations, self.length, self.width)
+        self.distance_matrix = self.create_distance_matrix(self.locations, self.length, self.width)
+        self.impact_matrix = self.calculate_impact_matrix(self.distance_matrix)
 
         # self.initialize_location(self.length, self.width, self.node_dimenstion)
 
@@ -78,4 +80,7 @@ class MapClass:
 
         return distance_matrix
 
-    # def calculate_distance(self):
+    def calculate_impact_matrix(self, distance_matrix):
+        dist = Normal(torch.tensor([0.0]), torch.tensor([2.5]))
+
+        return (dist.cdf(-distance_matrix)) * 2
