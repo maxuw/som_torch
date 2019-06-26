@@ -118,17 +118,11 @@ training = load_data(data)
 
 
 def cycle(map_, training_data, display_step=False):
-
     for batch in training_data:
-
         t_batch = torch.stack([x for x in batch]).float().t()
-
         for row in t_batch:
-
             print(row)
-
             i_bmu = map_.find_bmu(row).item()
-
             map_.move_closer(i_bmu, row)
             
     if display_step == True:
@@ -164,7 +158,11 @@ map1 = MapClass(length, width, dim, move_closer_coef)
 
 map1.map
 
+map1.cycle(map1.map, training)
 
+map1.cycle(map1.map, training)
+
+map1.cycle(map1.map, training)
 
 map1.distance_matrix
 

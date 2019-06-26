@@ -84,3 +84,15 @@ class MapClass:
         dist = Normal(torch.tensor([0.0]), torch.tensor([2.5]))
 
         return (dist.cdf(-distance_matrix)) * 2
+
+    def cycle(self, training_data, display_step=False):
+        for batch in training_data:
+            t_batch = torch.stack([x for x in batch]).float().t()
+            for row in t_batch:
+                # print(row)
+                i_bmu = self.map.find_bmu(row).item()
+                self.map.move_closer(i_bmu, row)
+
+        # if display_step == True:
+        #     basic_visualization(map_display(map_.map))
+        #     print(map_display(map_.map))
