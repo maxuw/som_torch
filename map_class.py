@@ -90,8 +90,8 @@ class MapClass:
             t_batch = torch.stack([x for x in batch]).float().t()
             for row in t_batch:
                 # print(row)
-                i_bmu = self.map.find_bmu(row).item()
-                self.map.move_closer(i_bmu, row)
+                i_bmu = self.find_bmu(row).item()
+                self.move_closer(i_bmu, row)
 
         # if display_step == True:
         #     basic_visualization(map_display(map_.map))

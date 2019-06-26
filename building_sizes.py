@@ -158,7 +158,7 @@ map1 = MapClass(length, width, dim, move_closer_coef)
 
 map1.map
 
-map1.cycle(map1.map, training)
+map1.cycle(training)
 
 map1.cycle(map1.map, training)
 
