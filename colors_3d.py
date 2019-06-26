@@ -108,11 +108,11 @@ training = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.map
+map1.weights
 
 map1.cycle(training)
 
-map1.map
+map1.weights
 
 map1.distance_matrix
 
