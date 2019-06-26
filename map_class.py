@@ -102,11 +102,32 @@ class MapClass:
 
         if verbose == True:
             self.basic_visualization()
-            print(weights_display(weights_.weights))
+            # print(weights_display(weights_.weights))
+
+    def step(self, training_data, verbose=False):
+        i = 0
+        for batch in training_data:
+            if i != 0: break
+            t_batch = torch.stack([x for x in batch]).float().t()
+            row = t_batch[0]
+            if verbose: print(row)
+            i_bmu = self.find_bmu(row, verbose).item()
+            self.move_closer(i_bmu, row)
+            i += 1
+
+        if verbose == True:
+            self.basic_visualization()
+            print(self.weights_to_map())
+
 
     def basic_visualization(self):
-        plt.imshow(self.weights);
+        plt.imshow(self.weights_to_map());
         plt.colorbar()
         plt.show()
 
-    
+    def weights_to_map(self):
+        #     return torch.transpose(map_, 0, 1).view(dim, length, width)
+        if self.node_dimenstion == 1:
+            return self.weights.view(self.length, self.width)
+        else:
+            return self.weights.view(self.node_dimenstion, self.length, self.width)

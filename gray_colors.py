@@ -88,9 +88,11 @@ training = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-map1.weights
+map1.weights_to_map()
 
-map1.cycle(training, verbose=True)
+map1.step(training, verbose=True)
+
+map1.step()
 
 map1.weights
 
