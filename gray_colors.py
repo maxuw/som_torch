@@ -78,23 +78,6 @@ def map_display(map_):
         return map_.view(length, width)
     else:
         return map_.view(dim, length, width)
-    
-
-
-def cycle(map_, training_data, display_step=False):
-    for batch in training_data:
-#         type(batch)
-#         print(batch)
-        for row in batch[0]:
-#             type(row)
-#             print(row)
-            i_bmu = map_.find_bmu(row).item()
-            map_.move_closer(i_bmu, row)
-        
-#     print(map_view(map_.map))
-    if display_step == True:
-        basic_visualization(map_display(map_.map))
-        print(map_display(map_.map))
 
 
 def large_cycle(map_, training_data):
@@ -109,14 +92,16 @@ def large_cycle(map_, training_data):
 
 training = load_data(data)
 
-
-
 map1 = MapClass(length, width, dim, move_closer_coef)
 
-cycle(map1, training)
+map1.map
 
-large_cycle(map1, training)
+map1.cycle(training)
 
+map1.map
 
+map1.distance_matrix
 
+map1.impact_matrix
 
+basic_visualization(map1.map)
