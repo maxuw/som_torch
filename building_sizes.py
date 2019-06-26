@@ -80,6 +80,7 @@ def map_display(map_):
         return map_.view(dim, length, width)
 
 
+# +
 def cycle(map_, training_data, display_step=False):
     for batch in training_data:
 #         type(batch)
@@ -94,7 +95,11 @@ def cycle(map_, training_data, display_step=False):
     if display_step == True:
         basic_visualization(map_display(map_.map))
         print(map_display(map_.map))
+        
+        
 
+        
+# -
 
 def large_cycle(map_, training_data):
     basic_visualization(map_display(map_.map))
@@ -105,8 +110,55 @@ def large_cycle(map_, training_data):
     print(map_display(map_.map))
 
 
+cycle(map1, training)
+
+cycle(map1, training)
 
 training = load_data(data)
+
+
+def cycle(map_, training_data, display_step=False):
+
+    for batch in training_data:
+
+        t_batch = torch.stack([x for x in batch]).float().t()
+
+        for row in t_batch:
+
+            print(row)
+
+            i_bmu = map_.find_bmu(row).item()
+
+            map_.move_closer(i_bmu, row)
+            
+    if display_step == True:
+        basic_visualization(map_display(map_.map))
+        print(map_display(map_.map))
+
+
+# +
+for train in training:
+    t_batch = torch.stack([x for x in train]).float().t()
+    print(t_batch, "\n\n")
+    
+#     for tr in train:
+#         print(tr, "\n")
+# -
+
+def cycle(map_, training_data, display_step=False):
+
+    for batch in training_data:
+
+        t_batch = torch.stack([x for x in batch]).float().t()
+
+        for row in t_batch:
+
+            print(row)
+
+            i_bmu = map_.find_bmu(row).item()
+
+            map_.move_closer(i_bmu, row)
+
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
