@@ -59,41 +59,19 @@ number_iterations = 100
 
 move_closer_coef = 0.5
 iterations = 100
-
-
-# -
-def basic_visualization(map_):
-    plt.imshow(map_);
-    plt.colorbar()
-    plt.show()
-
-
-# +
+# + {}
 trainloader = ""
 
 def load_data(data, batch_size=4, shuffle=False):
-    global dim
     dim = len(data[0])
+    number_rows_data = len(data)
     
     trainloader = torch.utils.data.DataLoader(data, batch_size=batch_size, shuffle=True)
     
-    return trainloader
+    return trainloader, dim, number_rows_data
 
 
 # -
-
-def map_view_for_coding(map_):
-    return torch.transpose(map_, 0, 1).view(dim, length, width)
-#     return map_.view(dim, length, width)
-
-
-def map_display(map_):
-#     return torch.transpose(map_, 0, 1).view(dim, length, width)
-    if dim == 1:
-        return map_.view(length, width)
-    else:
-        return map_.view(dim, length, width)
-
 
 def large_cycle(map_, training_data):
     basic_visualization(map_display(map_.map))
@@ -104,7 +82,7 @@ def large_cycle(map_, training_data):
     print(map_display(map_.map))
 
 
-training = load_data(data)
+training, dim, number_rows_data = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 

@@ -139,3 +139,20 @@ class MapClass:
     def map_view_for_coding(self):
         return torch.transpose(self.weights, 0, 1).view(self.node_dimenstion, self.length, self.width)
     #     return map_.view(dim, length, width)
+
+    def classify_all(self, training_data_raw, verbose=False):
+        data_classification = []
+        for row in training_data_raw:
+            # print(row)
+            i_bmu = self.find_bmu(row, verbose).item()
+            data_classification.append(i_bmu)
+
+        return data_classification
+
+    def convert_data_tensor(self, data):
+        list_data_tensor = []
+        for row in data:
+            row_tensor = torch.tensor(row)
+            list_data_tensor.append(row_tensor)
+
+        return list_data_tensor

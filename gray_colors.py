@@ -43,17 +43,16 @@ width = 2
 number_iterations = 100
 
 move_closer_coef = 0.5
-iterations = 100
 # + {}
 trainloader = ""
 
 def load_data(data, batch_size=4, shuffle=False):
-    global dim
     dim = len(data[0])
+    number_rows_data = len(data)
     
     trainloader = torch.utils.data.DataLoader(data, batch_size=batch_size, shuffle=True)
     
-    return trainloader
+    return trainloader, dim, number_rows_data
 
 
 # -
@@ -68,12 +67,17 @@ def large_cycle(map_, training_data):
 
 
 
-training = load_data(data)
+training, dim, number_rows_data = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
 map1.weights_to_map()
 
 map1.step(training, verbose=True)
+
+map1.classify_all(map1.convert_data_tensor(data))
+
+
+map1.convert_data_tensor(data)
 
 

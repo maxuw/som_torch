@@ -48,12 +48,12 @@ iterations = 100
 trainloader = ""
 
 def load_data(data, batch_size=4, shuffle=False):
-    global dim
     dim = len(data[0])
+    number_rows_data = len(data)
     
     trainloader = torch.utils.data.DataLoader(data, batch_size=batch_size, shuffle=True)
     
-    return trainloader
+    return trainloader, dim, number_rows_data
 
 
 # -
@@ -67,7 +67,7 @@ def large_cycle(map_, training_data):
     print(map_display(map_.map))
 
 
-training = load_data(data)
+training, dim, number_rows_data = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
