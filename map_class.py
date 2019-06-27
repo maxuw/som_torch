@@ -51,7 +51,7 @@ class MapClass:
     def move_closer(self, bmu_index, tensor_row_data):
 
         difference = tensor_row_data - self.weights
-        change = self.impact_matrix[bmu_index].view(4, 1) * difference
+        change = self.impact_matrix[bmu_index].view(self.length * self.width, -1) * difference
         self.weights = self.weights + (change * self.move_closer_coef)
 
         # change = self.weights[bmu_index] - tensor_row_data
@@ -110,14 +110,18 @@ class MapClass:
             if i != 0: break
             t_batch = torch.stack([x for x in batch]).float().t()
             row = t_batch[0]
-            if verbose: print(row)
+            if verbose: print("row of data", row)
             i_bmu = self.find_bmu(row, verbose).item()
             self.move_closer(i_bmu, row)
             i += 1
 
         if verbose == True:
-            self.basic_visualization()
-            print(self.weights_to_map())
+            if self.node_dimenstion == 1:
+                self.basic_visualization()
+                print(self.weights_to_map())
+            else:
+                self.map_view_for_coding()
+
 
 
     def basic_visualization(self):
@@ -125,9 +129,13 @@ class MapClass:
         plt.colorbar()
         plt.show()
 
-    def weights_to_map(self):
+    def weights_to_map(self): #old map_display
         #     return torch.transpose(map_, 0, 1).view(dim, length, width)
         if self.node_dimenstion == 1:
             return self.weights.view(self.length, self.width)
         else:
             return self.weights.view(self.node_dimenstion, self.length, self.width)
+
+    def map_view_for_coding(self):
+        return torch.transpose(self.weights, 0, 1).view(self.node_dimenstion, self.length, self.width)
+    #     return map_.view(dim, length, width)
