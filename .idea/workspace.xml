@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a8e9c765-0f87-47aa-86ee-cb4e9df37ca6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/colors_3d-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/colors_3d-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/gray_colors-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/gray_colors-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/scratchpad-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/scratchpad-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colors_3d.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/colors_3d.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colors_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/colors_3d.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gray_colors.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/gray_colors.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gray_colors.py" beforeDir="false" afterPath="$PROJECT_DIR$/gray_colors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchpad.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scratchpad.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,15 +152,15 @@
       <option name="presentableId" value="Default" />
       <updated>1561414669115</updated>
       <workItem from="1561414670339" duration="21195000" />
-      <workItem from="1561585533260" duration="9086000" />
+      <workItem from="1561585533260" duration="9686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30281000" />
+    <option name="totallyTimeSpent" value="30881000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="293" y="31" width="1494" height="955" extended-state="0" />
+    <frame x="293" y="31" width="1494" height="955" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17496543" />

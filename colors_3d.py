@@ -82,6 +82,23 @@ def large_cycle(map_, training_data):
     print(map_display(map_.map))
 
 
+def large_cycle_rgb(map_, training_data):
+    visualize_rgb(map_.weights)
+#     print(map_display(map_.map))
+    for i in range(number_iterations):
+        map_.cycle(training_data)
+    visualize_rgb(map_.weights)
+#     print(map_display(map_.map))
+
+
+def visualize_rgb(weights_):
+    tens_try = weights_.view(length, width, 3)
+    plt.imshow(tens_try)
+    plt.show()
+
+
+large_cycle_rgb(map1, training)
+
 training, dim, number_rows_data = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
@@ -95,7 +112,5 @@ map1.weights
 map1.distance_matrix
 
 map1.impact_matrix
-
-basic_visualization(map1.map)
 
 
