@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/colors_3d.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/colors_3d.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colors_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/colors_3d.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratchpad.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scratchpad.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="142" column="20" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="20" />
+            <state relative-caret-position="1080">
+              <caret line="54" column="69" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -151,15 +150,15 @@
       <option name="presentableId" value="Default" />
       <updated>1561414669115</updated>
       <workItem from="1561414670339" duration="21195000" />
-      <workItem from="1561585533260" duration="10303000" />
+      <workItem from="1561585533260" duration="11220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31498000" />
+    <option name="totallyTimeSpent" value="32415000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="293" y="31" width="1494" height="955" extended-state="1" />
+    <frame x="293" y="31" width="1494" height="955" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17496543" />
@@ -206,8 +205,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="142" column="20" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="20" />
+        <state relative-caret-position="1080">
+          <caret line="54" column="69" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>

@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 
 class MapClass:
 
-    def __init__(self, length, width, node_dimension, move_closer_coef):
+    def __init__(self, length, width, node_dimension, move_closer_coef, number_iterations):
         # print("dupa")
         self.length = length
         self.width = width
         self.node_dimenstion = node_dimension
         self.move_closer_coef = move_closer_coef
-
+        self.number_iterations = number_iterations
 
         self.weights = self.initialize_weights(self.length, self.width, self.node_dimenstion)
         self.locations = self.initialize_locations(self.weights)

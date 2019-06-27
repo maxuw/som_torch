@@ -59,12 +59,11 @@ gray_colors = [[0.1], [0.], [1.], [0.125], [0.529], [1.0], [0.33], [0.4], [0.67]
 data = rgb_colors
 batch_size = 4
 
-length = 20
-width = 20
-number_iterations = 100
+length = 10
+width = 10
+number_iterations = 1
 
-move_closer_coef = 0.5
-iterations = 100
+move_closer_coef = 0
 # + {}
 trainloader = ""
 
@@ -116,7 +115,7 @@ def visualize_rgb(map_):
 
 training, dim, number_rows_data = load_data(data)
 
-map1 = MapClass(length, width, dim, move_closer_coef)
+map1 = MapClass(length, width, dim, move_closer_coef, number_iterations)
 
 large_cycle_rgb(map1, training)
 
