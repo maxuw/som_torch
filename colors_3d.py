@@ -38,6 +38,12 @@ rgb_colors = [[0., 0., 0.],
       [.5, .5, .5],
       [.66, .66, .66]]
 
+color_names = \
+    ['black', 'blue', 'darkblue', 'skyblue',
+     'greyblue', 'lilac', 'green', 'red',
+     'cyan', 'violet', 'yellow', 'white',
+     'darkgrey', 'mediumgrey', 'lightgrey']
+
 #buildings data
 building_sizes = [[0.1, 0.3], [0.1, 0.2], [1., 1.], [0.125, 0.2], [0.529, 0.12], [1.0, 0.3], [0.33, 0.3], 
                   [0.4, 0.4], [0.67, 0.3], [.33, 0.7], [.5, 0.1]]
@@ -53,8 +59,8 @@ gray_colors = [[0.1], [0.], [1.], [0.125], [0.529], [1.0], [0.33], [0.4], [0.67]
 data = rgb_colors
 batch_size = 4
 
-length = 5
-width = 4
+length = 20
+width = 20
 number_iterations = 100
 
 move_closer_coef = 0.5
@@ -83,34 +89,73 @@ def large_cycle(map_, training_data):
 
 
 def large_cycle_rgb(map_, training_data):
-    visualize_rgb(map_.weights)
+    visualize_rgb(map_)
 #     print(map_display(map_.map))
     for i in range(number_iterations):
         map_.cycle(training_data)
-    visualize_rgb(map_.weights)
+    visualize_rgb(map_)
 #     print(map_display(map_.map))
 
 
-def visualize_rgb(weights_):
-    tens_try = weights_.view(length, width, 3)
+def visualize_rgb(map_):
+    print("trying to visualize map")
+    tens_try = map_.weights.view(length, width, 3)
     plt.imshow(tens_try)
+
+    classification = map_.classify_all(map_.convert_data_tensor(data))
+    for i in range(len(classification)):
+        loc_tuple = map_.get_location(classification[i])
+        plt.text(loc_tuple[1], loc_tuple[0], color_names[i], ha='center', va='center',
+        bbox=dict(facecolor='white', alpha=0.5, lw=0))
+
+# plt.text(0, 1, color_names[1], ha='center', va='center',
+#          bbox=dict(facecolor='white', alpha=0.5, lw=0))
     plt.show()
 
 
-large_cycle_rgb(map1, training)
 
 training, dim, number_rows_data = load_data(data)
 
 map1 = MapClass(length, width, dim, move_closer_coef)
 
+large_cycle_rgb(map1, training)
+
 map1.weights
 
 map1.cycle(training)
 
-map1.weights
-
 map1.distance_matrix
 
 map1.impact_matrix
+
+
+
+visualize_rgb(map1.weights)
+
+# +
+
+classification
+
+# +
+
+    
+    
+
+# +
+tens_try = map1.weights.view(length, width, 3)
+plt.imshow(tens_try)
+
+classification = map1.classify_all(map1.convert_data_tensor(data))
+for i in range(len(classification)):
+    loc_tuple = map1.get_location(classification[i])
+    plt.text(loc_tuple[1], loc_tuple[0], color_names[i], ha='center', va='center',
+         bbox=dict(facecolor='white', alpha=0.5, lw=0))
+z
+# plt.text(0, 1, color_names[1], ha='center', va='center',
+#          bbox=dict(facecolor='white', alpha=0.5, lw=0))
+plt.show()
+# -
+
+visualize_rgb(map1)
 
 

@@ -35,7 +35,7 @@ class MapClass:
         row = int((node_number / self.width))
         column = node_number - (row * self.width)
 
-        print(row, column)
+        # print(row, column)
         return(row, column)
 
     # returns index - topk[1];
