@@ -1,18 +1,25 @@
 import torch
 # from torch.nn.modules.distance import PairwiseDistance
+import torch.utils.data
 from torch.distributions.normal import Normal
 import matplotlib.pyplot as plt
 
 
 class MapClass:
 
-    def __init__(self, length, width, node_dimension, move_closer_coef, number_iterations):
+    def __init__(self, data, length, width, node_dimension, learning_rate, number_iterations, data_lables=None, batch_size=4, shuffle=True):
         # print("dupa")
         self.length = length
         self.width = width
         self.node_dimenstion = node_dimension
-        self.move_closer_coef = move_closer_coef
+        self.learning_rate = learning_rate
         self.number_iterations = number_iterations
+
+        self.batch_size = batch_size
+        self.shuffle = shuffle
+        self.data = data
+        self.trainloader, self.node_dimenstion, self.number_rows_data = self.load_data(self.data, self.batch_size=batch_size, self.shuffle=shuffle)
+        self.data_lables = data_lables
 
         self.weights = self.initialize_weights(self.length, self.width, self.node_dimenstion)
         self.locations = self.initialize_locations(self.weights)
@@ -156,3 +163,13 @@ class MapClass:
             list_data_tensor.append(row_tensor)
 
         return list_data_tensor
+
+    def load_data(self, data, batch_size, shuffle):
+        dim = len(data[0])
+        print(dim)
+        number_rows_data = len(data)
+        print(number_rows_data)
+
+        trainloader = torch.utils.data.DataLoader(data, batch_size=batch_size, shuffle=shuffle)
+
+        return trainloader, dim, number_rows_data
